@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'amit9693/jenkins-demo'
+        IMAGE_NAME = 'raushan08/jenkins-demo'
         CONTAINER_NAME = 'myapp'
     }
 
