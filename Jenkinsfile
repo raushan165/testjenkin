@@ -5,6 +5,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'raushan08/jenkins-demo'
         CONTAINER_NAME = 'myapp'
+        DOCKER_HOST = 'tcp://host.docker.internal:2375'
     }
 
     stages {
@@ -18,6 +19,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
+
                 sh "docker build -t ${IMAGE_NAME}:latest ."
             }
         }
@@ -49,11 +51,11 @@ pipeline {
     post {
 
         success {
-            echo '✅ Pipeline completed successfully!'
+            echo 'Pipeline completed successfully!'
         }
 
         failure {
-            echo '❌ Pipeline failed! Please check console logs.'
+            echo 'Pipeline failed! Please check console logs.'
         }
 
         always {
@@ -61,3 +63,4 @@ pipeline {
         }
     }
 }
+
